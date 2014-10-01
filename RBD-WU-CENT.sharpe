@@ -1,0 +1,84 @@
+format 8
+bind
+	lambdaWU_CM 10e-6
+	lambdaWU_S 2e-6
+	lambdaWU_A 1e-6
+	lambdaSB_SB 5e-7
+	lambdaCU_CM 10e-6
+	c 99e-2
+end
+
+* RDB of a wheel unit
+block WU_cent
+	comp CM exp(lambdaWU_CM)
+	comp Sensor exp(lambdaWU_S)
+	comp Actuator exp(lambdaWU_A)
+
+	parallel twoCM CM CM
+	parallel twoSensors Sensor Sensor
+	series top twoCM twoSensors Actuator
+end
+
+block SB_SB
+	comp SB exp(lambdaSB_SB)
+end
+
+ftree WU_four_cent_deg
+	basic WU cdf(WU_cent)
+	kofn top 2,4,WU
+end
+ftree WU_four_cent
+	basic WU cdf(WU_cent)
+	kofn top 1,4,WU
+end
+
+markov CU_triplex
+	* Transisions	
+	A B 3*lambdaCU_CM
+	B C 2*lambdaCU_CM*c
+	C D lambdaCU_CM
+	B D 2*(1-c)*lambdaCU_CM
+end
+
+	* INitial propbz
+	A 1.0
+	B 0.0
+	C 0.0
+	D 0.0
+end
+
+ftree FS_cent
+	basic WU cdf(WU_four_cent)
+	basic SB cdf(SB_SB)
+	basic CU cdf(CU_triplex)
+	kofn SBs 2,2,SB
+	or top WU SBs CU
+end
+ftree FS_cent_deg
+	basic WU cdf(WU_four_cent_deg)
+	basic SB cdf(SB_SB)
+	basic CU cdf(CU_triplex)
+	kofn SBs 2,2,SB
+	or top WU SBs CU
+end
+*expr mean( WU_cent )/24/365
+*expr mean( WU_four_cent )/24/365
+*expr mean( WU_four_cent_deg )/24/365
+*expr mean( CU_triplex )/24/365
+*expr mean( FS_cent )/24/365
+*expr mean( FS_cent_deg )/24/365
+
+*eval ( WU_cent) 0 35040 730
+*eval ( WU_four_cent) 0 35040 730
+*eval ( WU_four_cent_deg) 0 35040 730
+*eval ( CU_triplex) 0 35040 730
+*eval ( FS_cent) 0 35040 730
+eval ( FS_cent_deg) 0 35040 730
+
+*expr 1-value(17520; WU_cent )
+*expr 1-value(17520; WU_four_cent )
+*expr 1-value(17520; WU_four_cent_deg )
+*expr 1-value(17520; CU_triplex )
+*expr 1-value(17520; FS_cent )
+*expr 1-value(17520; FS_cent_deg )
+end
