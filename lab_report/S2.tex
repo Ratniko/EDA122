@@ -1,0 +1,59 @@
+
+%----------------------------------------------------------------------------------------
+%	SECTION 2
+%----------------------------------------------------------------------------------------
+\newpage
+\section{Overview of the Candidate Architecture}
+{This section shall describe the centralized and distributed architectures, and the two modes of operation (full functionality and degraded functionality). It should also describe the modelling assumptions, including the model parameters.} 
+\subsection{Centralized Architecture}
+/text/
+\subsection{Distributed Architecture}
+/text/
+\subsection{Modes of Operation}
+In this section you describe the two modes of operation of the system; full functionality and degraded functionality.
+\subsubsection{Full Functionality}
+/text/
+\subsubsection{Degraded Functionality}
+/text/
+\subsection{Assumptions and modeling parameters}
+/text/
+\begin{table}[h]
+\centering
+\begin{tabular}{| c | c | c | c |}
+\hline 
+Subsystem & Part & Failure rate & Coverage\\
+\hline
+System bus & Serial bus& FailureRate & 1\\
+\hline
+Wheel unit & Computer module & FailureRate & 1\\
+\hline
+Wheel unit & Sensor & FailureRate & 1\\
+\hline
+Wheel unit & Actuator & FailureRate & 1\\
+\hline
+Central unit & Computer module & FailureRate & 0.99\\
+\hline
+\end{tabular}
+\caption{Failure rates and coverage factors for the distributed architecture}
+\label{tab:Put a Lable}
+\end{table}
+\begin{table}[h]
+\centering
+\begin{tabular}{| c | c | c | c |}
+\hline 
+Subsystem & Part & Failure rate & Coverage\\
+\hline
+System bus & Serial bus& FailureRate & 1\\
+\hline
+Wheel unit & Computer module & FailureRate & 1\\
+\hline
+Wheel unit & Sensor & FailureRate & 1\\
+\hline
+Wheel unit & Actuator & FailureRate & 1\\
+\hline
+Central unit & Computer module & FailureRate & First CM failure:1 Second CM failure: 0.99\\
+\hline
+\end{tabular}
+\caption{Failure rates and coverage factors for the Centralized Architecture}
+\label{tab:Put a Lable}
+\end{table}

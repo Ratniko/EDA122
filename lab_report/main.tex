@@ -1,0 +1,90 @@
+\documentclass{article}
+\usepackage[dvips]{graphicx}
+\usepackage{float}
+\usepackage{graphics} 
+\usepackage{graphicx}
+\usepackage{color}
+\usepackage{subfig}
+%\usepackage[subnum]{cases}
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{amsfonts}
+\usepackage{pifont}
+\usepackage{rotating}
+\usepackage{latexsym}
+\usepackage{verbatim}
+%\usepackage[latin1]{inputenc}
+\usepackage{multirow}
+\usepackage{afterpage}
+\usepackage{epsfig}
+\usepackage{lscape}
+\usepackage{makeidx}
+\usepackage{tikz}
+\usetikzlibrary{shapes,arrows,positioning,backgrounds,calc,petri,calc,fit}
+%\tikzstyle{comp} = [draw, fill=blue!20, rectangle, minimum height=7mm, minimum width=14mm]
+\tikzstyle{comp} = [draw, rectangle, minimum height=7mm, minimum width=14mm]
+%\tikzstyle{voter} = [draw, fill=blue!20, circle, minimum height=7mm, minimum width=7mm]
+\tikzstyle{voter} = [draw, circle, minimum height=7mm, minimum width=7mm]
+%\tikzstyle{ftreeevent} = [draw, fill=blue!20, ellipse, minimum height=7mm, minimum width=14mm]
+\tikzstyle{ftreeevent} = [draw, ellipse, minimum height=7mm, minimum width=14mm]
+%\tikzstyle{state} = [draw, fill=blue!20, circle, minimum height=7mm, minimum width=7mm]
+\tikzstyle{state} = [draw, circle, minimum height=7mm, minimum width=7mm]
+%\tikzstyle{statebig} = [draw, fill=blue!20, circle, minimum height=11mm, minimum width=11mm]
+\tikzstyle{statebig} = [draw, circle, minimum height=11mm, minimum width=11mm]
+%[state/.style={circle,draw,thick,minimum size=5mm, node distance=2cm and 2cm}]
+
+\tikzset{imtransition/.style={rectangle,draw=black,fill=black,thick,inner sep=0pt,minimum height=5mm,minimum width=0.05mm}}
+\tikzset{every place/.style={minimum size=5mm,thick}}
+\tikzset{every transition/.style={thick,draw=black,fill=black,minimum height=5mm,minimum width=0.5mm}}
+%\tikzset{transitionr/.style={rectangle,thick,draw=black,fill=black,minimum width=5mm,minimum height=0.05mm}}
+\tikzset{transitionr/.style={rectangle,draw=black,fill=black,thick,inner sep=0pt,minimum height=1mm,minimum width=5mm}}
+\tikzset{every label/.style= black}
+\graphicspath{{./fig/}}
+%
+\title{Dependability Analysis of Two Candidate\\ Architectures for a Brake-By-Wire System \\
+\vspace{2.0cm}
+\small Laboratory report in \\ EDA122 Fault-Tolerant Computer Systems \\[5ex]} % Title
+\vspace{2.0cm}
+\vfill
+\author{Insert your name\\ Insert your name\\ \small Group\\
+\vspace{5.0cm}
+\\ \small Chalmers University of Technology \\
+\small Gothenburg, Sweden 2012\\
+\small Version no.: 0.0\\
+} % Author name
+
+
+\begin{document}
+
+\maketitle % Insert the title, author and date
+%
+%\setlength\parindent{0pt} % Removes all indentation from paragraphs
+%
+%\renewcommand{\labelenumi}{\alph{enumi}.} % Make numbering in the enumerate environment by letter rather than number (e.g. section 6)
+\newpage
+\tableofcontents
+
+\include{S1}
+\include{S2}
+\include{S3}
+\include{S4}
+\include{S5}
+\include{S6}
+\addcontentsline{toc}{section}{References}
+
+\begin{thebibliography}{9}
+%\bibitem{lamport94}
+%  Leslie Lamport,
+%  \emph{\LaTeX: A Document Preparation System}.
+%  Addison Wesley, Massachusetts,
+%  2nd Edition,
+%  1994.
+
+Please use Vancouver/IEEE style for your referencing. For more information please check: http://www.lib.unimelb.edu.au/cite/ieee/index.html
+\\
+The reference list shall be formatted as the reference list in this document. For an example of how to write references, see Kopetz and Bauer [1]. (This paper is part of the course literature and is published by the Institute of Electrical and Electronics Engineers, Inc, known as IEEE, and therefore follows the IEEE format for scientific journal papers. Other publishers use slightly different formats.)
+
+\end{thebibliography}
+
+
+\end{document}
