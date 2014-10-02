@@ -1,5 +1,5 @@
 #!/bin/bash
-pdflatex main
+pdflatex -output-directory=build main
 bibtex main
-pdflatex main
-pdflatex main
+pdflatex -output-directory=build main
+pdflatex -output-directory=build main
