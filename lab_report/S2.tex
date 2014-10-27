@@ -5,6 +5,10 @@
 \newpage
 \section{Overview of the Candidate Architecture}
 \todo[inline]{This section shall describe the centralized and distributed architectures, and the two modes of operation (full functionality and degraded functionality). It should also describe the modelling assumptions, including the model parameters.} 
+
+%We will investigate two possible implementations of the system. In the first approach, the anti-lock control algorithms are executed locally in the wheel units. The complexity of the wheel units is in this design approximately the same as that of the central unit. However, the failure rate of the wheel units is higher than for the central unit, as they are more exposed to vibrations, moisture and temperature cycling. We call this design approach the distributed architecture. 
+
+%The second approach is to execute the control algorithm for each wheel in the central unit, and let the wheel units consist of simple interfaces to the actuators and sensors. In this case, the control loops for anti-lock braking are closed over the communication network. The advantage with this approach is that the wheel units contain less hardware since they essentially consist of a communication interface, which sends data from the wheel speed sensor and receives commands to the brake actuator. Thus, the failure rate of the wheel units is lower compared to the other design. On the other hand, the failure rate of the central unit is higher, since it requires more processing power and more memory. We call this design approach the centralized architecture , since all control law calculations are performed by the central unit. 
 \subsection{Centralized Architecture}
 /text/
 \subsection{Distributed Architecture}
