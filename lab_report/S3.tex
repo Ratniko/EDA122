@@ -2,9 +2,10 @@
 \section{Description of Models}
 \todo[inline]{This section shall describe your models for the different subsystems for the two architectures and the two levels of functionality. Figures should be explained in the text.}
 
-%\Tree[.{WU Failure} [.{$1 \geq$} [.{CM subsystem fail} [.{\&} {CM1 fail} {CM2 fail} ] ] [.{S subsystem fail} [.{\&} {S1 fail} {S2 fail} ] ] [.{A subsystem fail} {A fail} ] ] ] 
+In this section, models for the two architectures and their subsystems will be described.
 
 \subsection{Wheel Unit Model}
+Each wheel unit consists of three different components, sensors (S), actuator (A), and computing modules (CM), organized as in \figref{fig2}. Each CM    
 \begin{figure}[H]
   \centering
   \includegraphics[scale=0.7]{Fig2.pdf}
@@ -13,7 +14,7 @@
 \end{figure}
 \begin{figure}[H]
   \centering
-  \includegraphics[scale=1]{wu_block.png}
+  \includegraphics[scale=0.7]{wu_block.png}
   \caption{Reliability block diagram of the wheel unit}
   \label{fig3}
 \end{figure}
@@ -33,8 +34,13 @@
 \end{figure}
 %--------------------------------
 \subsection{Central Unit (CU)}
+In the two evaluated architectures the central unit is configured in two different ways. The central unit for the distributed architecture is described in \secref{subsec:dda} and the central unit for the centralized architecture is described in \secref{subsec:cta}. 
+
 \subsubsection{Distributed Duplex Architecture}
-\begin{figure}[H]
+\label{subsec:dda}
+The distributed architecture's central unit consists of two computing modules (CM) configured in duplex. Each CM fails silent with a coverage factor of $99\%$. If a violation of the fail-silent property occurs, i.e. a CM delivers a erroneous result, the central unit fails. In \figref{fig6}
+
+\begin{figure}
   \centering
   \includegraphics[scale=.5]{Fig6.pdf}
   \caption{Central Unit, duplex configuration }
@@ -42,33 +48,26 @@
 \end{figure}
 \begin{figure}[H]
   \centering
-  \includegraphics[scale=.5]{cm2_block.png}
+  \includegraphics[scale=1.0]{cm2_block.png}
   \caption{Reliability block diagram for the Central Unit, duplex configuration}
   \label{fig7}
 \end{figure}
-%The markov model for central unit-duplex is given below as an example. 
-%\begin{figure}[h!]
-%  \centering
-%  \includegraphics[scale=.7]{Fig8.pdf}
-%  \caption{Markov model for the Central Unit. duplex configuration}
-%  \label{fig8}
-%\end{figure}
 \begin{figure}[h!]
-\begin{center}
-\begin{tikzpicture}[node distance=5mm and 20mm]
-\node[state] (s2) {A};
-\node[state] (s3) [right= of s2] {B};
-\node[state] (s4) [right= of s3] {C};
-\draw [->,bend left=45] (s2) to node[above] {$c*2\lambda_{CU-CM} $} (s3);
-\draw [->,bend right=45] (s2) to node[below] {$(1-c)*2\lambda_{CU-CM}$} (s4);
-\draw [->,bend left=45] (s3) to node[above] {$\lambda_{CU-CM}$} (s4);
-\end{tikzpicture}
-\caption{Markov chain model}
+  \begin{center}
+    \begin{tikzpicture}[node distance=5mm and 20mm]
+      \node[state] (s2) {A};
+      \node[state] (s3) [right= of s2] {B};
+      \node[state] (s4) [right= of s3] {C};
+      \draw [->,bend left=45] (s2) to node[above] {$c*2\lambda_{CU-CM} $} (s3);
+      \draw [->,bend right=45] (s2) to node[below] {$(1-c)*2\lambda_{CU-CM}$} (s4);
+      \draw [->,bend left=45] (s3) to node[above] {$\lambda_{CU-CM}$} (s4);
+    \end{tikzpicture}
+  \caption{Markov chain model}
 \end{center}
 \end{figure}
 %-------------
 \subsubsection{Centralized Triplex Architecture}
-
+\label{subsec:cta}
 \begin{figure}[H]
   \centering
   \includegraphics[scale=.5]{Fig9.pdf}
