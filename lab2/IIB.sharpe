@@ -1,0 +1,81 @@
+format 8
+bind
+	lambdaPU 8e-4
+	lambdaDU 1e-3
+*	lambdaDU 10384e-7
+*	lambdaPU 0.8*lambdaDU
+	myPU 1
+	myDU 5e-1
+end
+
+
+markov duplex_markov
+DDPP DdPP 2*lambdaDU
+DdPP ddPP lambdaDU
+DdPP DdPp 2*lambdaPU
+ddPp ddPP myPU
+ddPP DdPP myDU
+DdPP DDPP myDU
+DDPP DDPp 2*lambdaPU
+DDPp DDpp lambdaPU
+DDpp DDPp myPU
+DDPp DDPP myPU
+DdPp ddPp lambdaDU
+DdPp DdPP myPU
+DdPp Ddpp lambdaPU
+Ddpp DdPp myPU
+DDPp DdPp 2*lambdaDU
+end
+DDPP 1
+DDPp 0
+DdPp 0
+Ddpp 0
+DdPP 0
+ddPp 0
+DDpp 0
+ddPP 0
+end
+
+gspn duplex_petri
+* Places
+PUP 2
+PDO 0
+DUP 2
+DDO 0
+end
+* timed transisions (ind=independent, dep=dependent)
+tPfail dep PUP lambdaPU
+tPrep ind myPU
+tDfail dep DUP lambdaDU 
+tDrep ind myDU
+end
+* immediate trans.
+end
+*input arcs
+PUP tPfail 1
+PDO tPrep 1
+DUP tDfail 1
+DDO tDrep 1
+end
+*output arcs
+tPfail PDO 1
+tPrep PUP 1
+tDfail DDO 1
+tDrep DUP 1
+end
+*inhibitor arcs
+PDO tDfail 2
+DDO tPfail 2
+PDO tDrep 1
+end
+
+func ss_markov() \
+prob (duplex_markov, DDPP) + prob (duplex_markov, DdPP) + prob (duplex_markov, DDPp) + prob (duplex_markov, DdPp)
+
+func ss_petri() \
+(1-(prempty(duplex_petri, PUP)+prempty(duplex_petri, DUP)))
+
+expr ss_petri()
+expr ss_markov()
+
+end 

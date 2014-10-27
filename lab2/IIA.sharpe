@@ -1,0 +1,78 @@
+format 8
+bind
+	lambdaPU 8e-4
+	lambdaDU 1e-3
+	myPU 1
+	myDU 5e-1
+end
+markov simplex_markov
+A D lambdaDU
+D DD lambdaPU
+D A myDU
+DD P myDU
+
+A P lambdaPU
+P PP lambdaDU
+P A myPU
+PP D myPU
+
+end
+A 	1
+P 	0
+PP 	0
+D 	0
+DD 	0
+end
+
+gspn simplex_petri
+* Places
+PU 1
+PD 0
+PW 0
+DU 1
+DD 0
+DW 0
+end
+
+* timed transisions (ind=independent, dep=dependent)
+tPfail ind lambdaPU
+tPrep ind myPU
+tDfail ind lambdaDU
+tDrep ind myDU
+end
+* immediate trans.
+iPwait ind 1
+iDwait ind 1
+end
+*input arcs
+PU tPfail 1
+PD tPrep 1
+PW iPwait 1
+DU tDfail 1
+DD tDrep 1
+DW iDwait 1
+end
+*output arcs
+tPfail PW 1
+iPwait PD 1
+tPrep PU 1
+
+tDfail DW 1
+iDwait DD 1
+tDrep DU 1
+end
+*inhibitor arcs
+PD iDwait 1
+DD iPwait 1
+end
+
+
+func ss_markov() \
+prob (simplex_markov, A)
+
+func ss_petri() \
+(prempty(simplex_petri, PD) + prempty(simplex_petri, DD))-1 
+
+expr ss_markov()
+expr ss_petri()
+end 

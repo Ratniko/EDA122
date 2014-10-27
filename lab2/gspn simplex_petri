@@ -1,0 +1,38 @@
+gspn simplex_petri
+
+* Places
+PU 1
+PD 0
+DU 1
+DD 0
+
+end
+* timed transisions (ind=independent, dep=dependent)
+tPfail ind lambdaPU
+tPrep ind myPU
+
+tDfail ind lambdaDU
+tDrep ind myDU
+
+end
+* immediate trans.
+end
+
+*input arcs
+PU tPfail 1
+PD tPrep 1
+
+DU tDfail 1
+PD tPrep 1
+
+end
+*output arcs
+tPfail PD 1
+tPrep PU 1
+
+tDfail DD 1
+tDrep DU 1
+
+end
+*inhibitor arcs
+end

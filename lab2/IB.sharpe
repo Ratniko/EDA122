@@ -1,0 +1,96 @@
+format 8
+bind
+	lambdaPU 8e-4
+	lambdaDU 1e-3
+	myPU 1
+	myDU 5e-1
+	c 9998653e-7
+end
+
+
+gspn duplex_petri
+* Places
+PUP 2
+PDO 0
+DUP 2
+DDO 0
+end
+* timed transisions (ind=independent, dep=dependent)
+tPfail dep PUP lambdaPU
+tPrep ind myPU
+tDfail dep DUP lambdaDU 
+tDrep ind myDU
+end
+* immediate trans.
+end
+*input arcs
+PUP tPfail 1
+PDO tPrep 1
+DUP tDfail 1
+DDO tDrep 1
+end
+*output arcs
+tPfail PDO 1
+tPrep PUP 1
+tDfail DDO 1
+tDrep DUP 1
+end
+*inhibitor arcs
+end
+
+gspn duplex_petri_cfactor
+* Places
+PUP 2
+PDO 0
+DUP 2
+DDO 0
+Pt 0
+Dt 0
+end
+* timed transisions (ind=independent, dep=dependent)
+tPfail dep PUP lambdaPU * c
+tPucfail dep PUP lambdaPU * (1-c)
+tPrep ind myPU
+tDfail dep DUP lambdaDU * c
+tDucfail dep DUP lambdaDU * (1-c)
+tDrep ind myDU
+end
+* immediate trans.
+iPucfail ind 1
+iDucfail ind 1
+end
+*input arcs
+PUP tPfail 1
+PUP tPucfail 1
+PUP iPucfail 1
+Pt iPucfail 1
+PDO tPrep 1
+DUP tDfail 1
+DUP tDucfail 1
+DUP iDucfail 1
+Dt iDucfail 1
+DDO tDrep 1
+
+end
+*output arcs
+tPfail PDO 1
+tPucfail Pt 1
+iPucfail PDO 2
+tPrep PUP 1
+tDfail DDO 1
+tDucfail Dt 1
+iDucfail DDO 2
+tDrep DUP 1
+end
+*inhibitor arcs
+end
+
+func ss_petri() \
+(1-prempty(duplex_petri, PUP))*(1-prempty(duplex_petri, DUP))
+
+func ss_petri_cfactor() \
+(1-prempty(duplex_petri_cfactor, PUP))*(1-prempty(duplex_petri_cfactor, DUP))
+
+expr ss_petri()
+expr ss_petri_cfactor()
+end 

@@ -1,0 +1,54 @@
+format 8
+bind
+	lambdaPU 8e-4
+	lambdaDU 1e-3
+	myPU 1
+	myDU 5e-1
+end
+
+
+gspn duplex_petri
+* Places
+PUP 2
+PDO 0
+PWT 0
+DUP 2
+DDO 0
+end
+* timed transisions (ind=independent, dep=dependent)
+tPfail dep PUP lambdaPU
+tPrep ind myPU
+tDfail dep DUP lambdaDU 
+tDrep ind myDU
+end
+* immediate trans.
+iWin ind 1
+iWout ind 1
+end
+*input arcs
+PUP tPfail 1
+PDO tPrep 1
+PDO iWin 1
+PWT iWout 1
+DUP tDfail 1
+DDO tDrep 1
+end
+*output arcs
+tPfail PDO 1
+tPrep PUP 1
+tDfail DDO 1
+tDrep DUP 1
+iWin PWT 1
+iWout PDO 1
+end
+*inhibitor arcs
+PDO tDrep 1
+DUP iWin 1
+DDO iWout 2
+end
+
+func ss_petri() \
+(1-(prempty(duplex_petri, PUP)+prempty(duplex_petri, DUP)))
+
+expr ss_petri()
+end 
