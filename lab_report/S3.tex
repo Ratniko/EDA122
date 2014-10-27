@@ -88,7 +88,15 @@
 \end{figure}
 \begin{figure}[H]
   \centering
-  \includegraphics[scale=.5]{Fig11.pdf}
+  %\includegraphics[scale=.5]{Fig11.pdf}
+  \begin{tikzpicture}[node distance=5mm and 20mm]
+    \node[state] (sa) {A};
+    \node[state] (sb) [right= of s2] {B};
+    \node[state] (sc) [right= of s3] {C};
+    \draw [->,bend left=45] (s2) to node[above] {$c*2\lambda_{CU-CM} $} (s3);
+    \draw [->,bend right=45] (s2) to node[above] {$(1-c)*2\lambda_{CU-CM}$} (s4);
+    \draw [->,bend left=45] (s3) to node[above] {$\lambda_{CU-CM}$} (s4);
+  \end{tikzpicture}
   \caption{Caption}
   \label{fig11}
 \end{figure}
