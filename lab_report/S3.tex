@@ -62,7 +62,7 @@
 \node[state] (s3) [right= of s2] {B};
 \node[state] (s4) [right= of s3] {C};
 \draw [->,bend left=45] (s2) to node[above] {$c*2\lambda_{CU-CM} $} (s3);
-\draw [->,bend right=45] (s2) to node[above] {$(1-c)*2\lambda_{CU-CM}$} (s4);
+\draw [->,bend right=45] (s2) to node[below] {$(1-c)*2\lambda_{CU-CM}$} (s4);
 \draw [->,bend left=45] (s3) to node[above] {$\lambda_{CU-CM}$} (s4);
 \end{tikzpicture}
 \caption{Markov chain model}
@@ -90,12 +90,14 @@
   \centering
   %\includegraphics[scale=.5]{Fig11.pdf}
   \begin{tikzpicture}[node distance=5mm and 20mm]
-    \node[state] (sa) {A};
-    \node[state] (sb) [right= of s2] {B};
-    \node[state] (sc) [right= of s3] {C};
-    \draw [->,bend left=45] (s2) to node[above] {$c*2\lambda_{CU-CM} $} (s3);
-    \draw [->,bend right=45] (s2) to node[above] {$(1-c)*2\lambda_{CU-CM}$} (s4);
-    \draw [->,bend left=45] (s3) to node[above] {$\lambda_{CU-CM}$} (s4);
+    \node[state] (sa) {3};
+    \node[state] (sb) [right= of sa] {2};
+    \node[state] (sc) [right= of sb] {1};
+    \node[state] (sd) [right= of sc] {F};
+    \draw [->,bend left=45] (sa) to node[above] {$3\lambda_{CU-CM} $} (sb);
+    \draw [->,bend left=45] (sb) to node[above] {$c*2\lambda_{CU-CM} $} (sc);
+    \draw [->,bend right=45] (sb) to node[below] {$(1-c)*2\lambda_{CU-CM}$} (sd);
+    \draw [->,bend left=45] (sc) to node[above] {$\lambda_{CU-CM}$} (sd);
   \end{tikzpicture}
   \caption{Caption}
   \label{fig11}
