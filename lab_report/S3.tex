@@ -1,5 +1,6 @@
 \newpage
 \section{Description of Models}
+\label{s3}
 \todo[inline]{This section shall describe your models for the different subsystems for the two architectures and the two levels of functionality. Figures should be explained in the text.}
 
 In this section, models for the two architectures and their subsystems will be described.
@@ -22,13 +23,12 @@ Each wheel unit consists of three different components, sensors (S), actuator (A
 \subsection{Wheel Unit Subsystem Model}
 The combination of all four WUs yields the wheel unit subsystem. In the full functionality mode of operation the subsystem can not tolerate any broken WUs, for which a fault tree is shown in \figref{fig4}. When running in the other mode of operation, allowing degraded functionality, one WU can become faulty without causing a full system failure, shown in \figref{fig5}. 
 \begin{figure}[H]
-  \centering
-  \includegraphics[scale=0.5]{Fig4.pdf}
+  \Tree[.{WU Subsystem Failure} [.{$1 \geq$} WU WU WU WU ] ]
   \caption{Fault tree for the Wheel Unit Subsystem, full functionality}
   \label{fig4}
 \end{figure}
 \begin{figure}[H]
-  \Tree[.{WU Failure} [.{$2 \geq$} WU WU WU WU ] ]
+  \Tree[.{WU Subsystem Failure} [.{$2 \geq$} WU WU WU WU ] ]
   \caption{Fault tree for the Wheel Unit Subsystem, degraded functionality}
   \label{fig5}
 \end{figure}
