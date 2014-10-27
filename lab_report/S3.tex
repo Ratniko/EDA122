@@ -2,6 +2,8 @@
 \section{Description of Models}
 \todo[inline]{This section shall describe your models for the different subsystems for the two architectures and the two levels of functionality. Figures should be explained in the text.}
 
+%\Tree[.{WU Failure} [.{$1 \geq$} [.{CM subsystem fail} [.{\&} {CM1 fail} {CM2 fail} ] ] [.{S subsystem fail} [.{\&} {S1 fail} {S2 fail} ] ] [.{A subsystem fail} {A fail} ] ] ] 
+
 \subsection{Wheel Unit Model}
 \begin{figure}[H]
   \centering
@@ -26,7 +28,8 @@
 \end{figure}
 \begin{figure}[H]
   \centering
-  \includegraphics[scale=0.5]{Fig5.pdf}
+  %\includegraphics[scale=0.5]{Fig5.pdf}
+  \Tree[.{WU Failure} [.{$2 \geq$} WU WU WU WU ] ]
   \caption{Fault tree for the Wheel Unit Subsystem, degraded functionality}
   \label{fig5}
 \end{figure}
@@ -41,7 +44,7 @@
 \end{figure}
 \begin{figure}[H]
   \centering
-  \includegraphics[scale=.5]{Fig7.pdf}
+  \includegraphics[scale=.5]{cm2_block.png}
   \caption{Reliability block diagram for the Central Unit, duplex configuration}
   \label{fig7}
 \end{figure}
@@ -79,7 +82,7 @@
 
 \begin{figure}[H]
   \centering
-  \includegraphics[scale=.5]{Fig10.pdf}
+  \includegraphics[scale=.5]{cm3_block.png}
   \caption{Caption }
   \label{fig10}
 \end{figure}
@@ -95,13 +98,15 @@
 
 \begin{figure}[H]
   \centering
-  \includegraphics[scale=.5]{Fig12.pdf}
+  %\includegraphics[scale=.5]{Fig12.pdf}
+  \Tree[.{System Failure} [.{$1 \geq$} [.{CU subsystem fail} [.{$2 \geq$} CM CM CM ] ] [.{WU subsystem fail} [.{$1 \geq$} WU WU WU WU ] ] [.{SB subsystem fail} [.{\&} SB SB ] ] ] ]
   \caption{Fault tree for Full Functionality}
   \label{fig12}
 \end{figure}
 \begin{figure}[H]
   \centering
-  \includegraphics[scale=.5]{Fig13.pdf}
+  %\includegraphics[scale=.5]{Fig13.pdf}
+  \Tree[.{System Failure} [.{$1 \geq$} [.{CU subsystem fail} [.{$2 \geq$} CM CM CM ] ] [.{WU subsystem fail} [.{$2 \geq$} WU WU WU WU ] ] [.{SB subsystem fail} [.{\&} SB SB ] ] ] ]
   \caption{Fault tree for Degraded Functionality}
   \label{fig13}
 \end{figure}
@@ -109,13 +114,15 @@
 \subsubsection{Distributed Architecture}
 \begin{figure}[H]
   \centering
-  \includegraphics[scale=.5]{Fig14.pdf}
+  %\includegraphics[scale=.5]{Fig14.pdf}
+  \Tree[.{System Failure} [.{$1 \geq$} [.{CU subsystem fail} [.{$1 \geq$} CM CM ] ] [.{WU subsystem fail} [.{$1 \geq$} WU WU WU WU ] ] [.{SB subsystem fail} [.{\&} SB SB ] ] ] ]
   \caption{Fault tree for Full Functionality}
   \label{fig14}
 \end{figure}
 \begin{figure}[H]
   \centering
-  \includegraphics[scale=.5]{Fig15.pdf}
+  %\includegraphics[scale=.5]{Fig15.pdf}
+  \Tree[.{System Failure} [.{$1 \geq$} [.{CU subsystem fail} [.{$1 \geq$} CM CM ] ] [.{WU subsystem fail} [.{$2 \geq$} WU WU WU WU ] ] [.{SB subsystem fail} [.{\&} SB SB ] ] ] ]
   \caption{Fault tree for Degraded Functionality}
   \label{fig15}
 \end{figure}
