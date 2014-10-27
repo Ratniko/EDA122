@@ -3,3 +3,4 @@ pdflatex -output-directory=build main
 bibtex main
 pdflatex -output-directory=build main
 pdflatex -output-directory=build main
+cp build/main.pdf ./lab_report.pdf
