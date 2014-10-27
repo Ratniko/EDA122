@@ -27,8 +27,6 @@
   \label{fig4}
 \end{figure}
 \begin{figure}[H]
-  \centering
-  %\includegraphics[scale=0.5]{Fig5.pdf}
   \Tree[.{WU Failure} [.{$2 \geq$} WU WU WU WU ] ]
   \caption{Fault tree for the Wheel Unit Subsystem, degraded functionality}
   \label{fig5}
@@ -88,7 +86,6 @@
 \end{figure}
 \begin{figure}[H]
   \centering
-  %\includegraphics[scale=.5]{Fig11.pdf}
   \begin{tikzpicture}[node distance=5mm and 20mm]
     \node[state] (sa) {3};
     \node[state] (sb) [right= of sa] {2};
@@ -107,15 +104,11 @@
 \subsubsection{Centralized Architecture}
 
 \begin{figure}[H]
-  \centering
-  %\includegraphics[scale=.5]{Fig12.pdf}
   \Tree[.{System Failure} [.{$1 \geq$} [.{CU subsystem fail} [.{$2 \geq$} CM CM CM ] ] [.{WU subsystem fail} [.{$1 \geq$} WU WU WU WU ] ] [.{SB subsystem fail} [.{\&} SB SB ] ] ] ]
   \caption{Fault tree for Full Functionality}
   \label{fig12}
 \end{figure}
 \begin{figure}[H]
-  \centering
-  %\includegraphics[scale=.5]{Fig13.pdf}
   \Tree[.{System Failure} [.{$1 \geq$} [.{CU subsystem fail} [.{$2 \geq$} CM CM CM ] ] [.{WU subsystem fail} [.{$2 \geq$} WU WU WU WU ] ] [.{SB subsystem fail} [.{\&} SB SB ] ] ] ]
   \caption{Fault tree for Degraded Functionality}
   \label{fig13}
@@ -123,15 +116,11 @@
 %-------------
 \subsubsection{Distributed Architecture}
 \begin{figure}[H]
-  \centering
-  %\includegraphics[scale=.5]{Fig14.pdf}
   \Tree[.{System Failure} [.{$1 \geq$} [.{CU subsystem fail} [.{$1 \geq$} CM CM ] ] [.{WU subsystem fail} [.{$1 \geq$} WU WU WU WU ] ] [.{SB subsystem fail} [.{\&} SB SB ] ] ] ]
   \caption{Fault tree for Full Functionality}
   \label{fig14}
 \end{figure}
 \begin{figure}[H]
-  \centering
-  %\includegraphics[scale=.5]{Fig15.pdf}
   \Tree[.{System Failure} [.{$1 \geq$} [.{CU subsystem fail} [.{$1 \geq$} CM CM ] ] [.{WU subsystem fail} [.{$2 \geq$} WU WU WU WU ] ] [.{SB subsystem fail} [.{\&} SB SB ] ] ] ]
   \caption{Fault tree for Degraded Functionality}
   \label{fig15}
