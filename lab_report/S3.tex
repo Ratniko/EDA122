@@ -5,7 +5,7 @@
 In this section, models for the two architectures and their subsystems will be described.
 
 \subsection{Wheel Unit Model}
-Each wheel unit consists of three different components, sensors (S), actuator (A), and computing modules (CM), organized as in \figref{fig2}. Each CM    
+Each wheel unit consists of three different components, sensors (S), actuator (A), and computing modules (CM), organized as in \figref{fig2}. There are two redundant CMs, two redundant sensors, and one actuator, yielding the reliability block diagram shown in \figref{fig3}.   
 \begin{figure}[H]
   \centering
   \includegraphics[scale=0.7]{Fig2.pdf}
@@ -20,7 +20,7 @@ Each wheel unit consists of three different components, sensors (S), actuator (A
 \end{figure}
 %--------------------------------
 \subsection{Wheel Unit Subsystem Model}
-/text/
+The combination of all four WUs yields the wheel unit subsystem. In the full functionality mode of operation the subsystem can not tolerate any broken WUs, for which a fault tree is shown in \figref{fig4}. When running in the other mode of operation, allowing degraded functionality, one WU can become faulty without causing a full system failure, shown in \figref{fig5}. 
 \begin{figure}[H]
   \centering
   \includegraphics[scale=0.5]{Fig4.pdf}
