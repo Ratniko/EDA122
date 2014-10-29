@@ -7,13 +7,15 @@
 \label{S2}
 \todo[inline]{This section shall describe the centralized and distributed architectures, and the two modes of operation (full functionality and degraded functionality). It should also describe the modelling assumptions, including the model parameters.} 
 
+In this section, we explain the two proposed architectures with their respective operational modes, modelling assumptions and model parameters. First, the centralized architecture is covered and then the distributed architecture is described. 
+
 %We will investigate two possible implementations of the system. In the first approach, the anti-lock control algorithms are executed locally in the wheel units. The complexity of the wheel units is in this design approximately the same as that of the central unit. However, the failure rate of the wheel units is higher than for the central unit, as they are more exposed to vibrations, moisture and temperature cycling. We call this design approach the distributed architecture. 
 
 %The second approach is to execute the control algorithm for each wheel in the central unit, and let the wheel units consist of simple interfaces to the actuators and sensors. In this case, the control loops for anti-lock braking are closed over the communication network. The advantage with this approach is that the wheel units contain less hardware since they essentially consist of a communication interface, which sends data from the wheel speed sensor and receives commands to the brake actuator. Thus, the failure rate of the wheel units is lower compared to the other design. On the other hand, the failure rate of the central unit is higher, since it requires more processing power and more memory. We call this design approach the centralized architecture , since all control law calculations are performed by the central unit. 
 \subsection{Centralized Architecture}
-/text/
+In the centralized architecture, the individual brake commands are computed in the CU and then transferred to the WUs, which activates the brake actuator. In this approach a WU consists merely of an interface to the sensors and activators connected to the corresponding WU, which actions consists of sending the measured wheel speed to the CU and receiving brake commands. 
 \subsection{Distributed Architecture}
-\todo[inline]{Cite the reference list shall be formatted as the reference list in this document. For an example of how to write references, see Kopetz and Bauer [1]. (This paper is part of the course literature and is published by the Institute of Electrical and Electronics Engineers, Inc, known as IEEE, and therefore follows the IEEE format for scientific journal papers. Other publishers use slightly different formats.)\cite{lamport94}}
+////////////////////
 \subsection{Modes of Operation}
 \todo[inline]{In this section you describe the two modes of operation of the system; full functionality and degraded functionality.}
 \subsubsection{Full Functionality}
@@ -22,6 +24,8 @@
 /text/
 \subsection{Assumptions and modeling parameters}
 /text/
+
+
 \begin{table}[h]
 \centering
 \begin{tabular}{| c | c | c | c |}
@@ -40,7 +44,9 @@ Central unit & Computer module & FailureRate & 0.99\\
 \hline
 \end{tabular}
 \caption{Failure rates and coverage factors for the distributed architecture}
-\label{tab:Put a Lable}
+\label{tab:faildist}
+
+
 \end{table}
 \begin{table}[h]
 \centering
@@ -60,5 +66,5 @@ Central unit & Computer module & FailureRate & First CM failure:1 Second CM fail
 \hline
 \end{tabular}
 \caption{Failure rates and coverage factors for the Centralized Architecture}
-\label{tab:Put a Lable}
+\label{tab:failcent}
 \end{table}
