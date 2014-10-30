@@ -81,5 +81,5 @@ eval ( WU_four_dist ) 0 35040 730
 *expr 1-value(17520; WU_four_dist_deg )
 *expr 1-value(17520; CU_duplex )
 *expr 1-value(17520; FS_dist )
-expr 1-value(21961; FS_dist_deg )
+*expr 1-value(21961; FS_dist_deg )
 end

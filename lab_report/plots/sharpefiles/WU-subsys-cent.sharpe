@@ -4,7 +4,7 @@ bind
 	lambdaWU_S 2e-6
 	lambdaWU_A 1e-6
 	lambdaSB_SB 5e-7
-	lambdaCU_CM 222140418e-13
+	lambdaCU_CM 10e-6
 	c 99e-2
 end
 
@@ -69,9 +69,9 @@ end
 *expr mean( FS_cent_deg )/24/365
 
 *eval ( WU_cent) 0 35040 730
-*eval ( WU_four_cent) 0 35040 730
+eval ( WU_four_cent) 0 35040 730
 *eval ( WU_four_cent_deg) 0 35040 730
-eval ( CU_triplex) 0 35040 730
+*eval ( CU_triplex) 0 35040 730
 *eval ( FS_cent) 0 35040 730
 *eval ( FS_cent_deg) 0 35040 730
 
