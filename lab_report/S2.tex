@@ -5,45 +5,47 @@
 \newpage
 \section{Overview of the Candidate Architecture}
 \label{S2}
-\todo[inline]{This section shall describe the centralized and distributed architectures, and the two modes of operation (full functionality and degraded functionality). It should also describe the modelling assumptions, including the model parameters.} 
 
-In this section, we explain the two proposed architectures with their respective operational modes, modelling assumptions and model parameters. First, the centralized architecture is covered and then the distributed architecture is described. 
+In this section, we explain the two proposed architectures and their operational modes, modelling assumptions and model parameters. First, the centralized architecture is covered and then the distributed architecture is described. 
 
-%We will investigate two possible implementations of the system. In the first approach, the anti-lock control algorithms are executed locally in the wheel units. The complexity of the wheel units is in this design approximately the same as that of the central unit. However, the failure rate of the wheel units is higher than for the central unit, as they are more exposed to vibrations, moisture and temperature cycling. We call this design approach the distributed architecture. 
-
-%The second approach is to execute the control algorithm for each wheel in the central unit, and let the wheel units consist of simple interfaces to the actuators and sensors. In this case, the control loops for anti-lock braking are closed over the communication network. The advantage with this approach is that the wheel units contain less hardware since they essentially consist of a communication interface, which sends data from the wheel speed sensor and receives commands to the brake actuator. Thus, the failure rate of the wheel units is lower compared to the other design. On the other hand, the failure rate of the central unit is higher, since it requires more processing power and more memory. We call this design approach the centralized architecture , since all control law calculations are performed by the central unit. 
 \subsection{Centralized Architecture}
 In the centralized architecture, the individual brake commands are computed in the CU and then transferred to the WUs, which activates the brake actuator. In this approach a WU consists merely of an interface to the sensors and activators connected to the corresponding WU, which actions consists of sending the measured wheel speed to the CU and receiving brake commands. 
-\subsection{Distributed Architecture}
-////////////////////
-\subsection{Modes of Operation}
-\todo[inline]{In this section you describe the two modes of operation of the system; full functionality and degraded functionality.}
-\subsubsection{Full Functionality}
-/text/
-\subsubsection{Degraded Functionality}
-/text/
-\subsection{Assumptions and modeling parameters}
-/text/
 
+\subsection{Distributed Architecture}
+Opposing to the first architecture, the brake commands are derived in each WU for the distributed architecture. This simplifies the CU to only gather input data and sending it to each WU. This also complicates the WUs, which has to include more hardware to be able to compute the command. By adding more hardware and increasing the workload, the failure rate is higher for a WU in this design than for the centralized architecture. On the other hand, the CU can be simplified and thus has a lower failure rate compared the other design. 
+
+\subsection{Modes of Operation}
+Both the designs can operate in two modes of operations, one with full functionality and one with degraded functionality.
+\subsubsection{Full Functionality}
+In this mode, the system can provide the service without any noticeable impact on brake performance. Full functionality can be provided unless a non-redundant part fails.
+\subsubsection{Degraded Functionality}
+The system applies one level of graceful degradation and can deliver the service (the brake functionality) when one WU has failed. Degraded functionality can be provided as long as no non-redundant part fails, except for one of the WUs.
+\subsection{Assumptions and modeling parameters}
+
+Some assumptions have been made to simplify the evaluation. On all components except the computer module in the CU, it is assumed that the fault coverage is ideal and that the failure mode is only fail silent. The bus interfaces between a serial bus and a computer module is also assumed to be ideal. It is also assumed that a break service can not be delivered if more than one WU fails.
+
+The model parameters used in this evaluation are failure rate parameters and failure coverage factor on each part of the system. The system is divided into three subsystems, system bus, WU and CU. The subsystems system bus and CU only has one part, the serial buses and computer modules, respectively. The WU on the other hand comprises of a computer module, sensors, and an actuator. Due to the differences of the two architectures, their modeling parameters are not entirely identical. 
+
+Model parameters for the distributed architecture is presented in \tabref{tab:faildist} and the corresponding parameters for the centralized architecture are shown in \tabref{tab:failcent}. As mentioned, the parts on which the values are not equal between the designs are the computer module(s) in the CU and WU. The fault coverage varies for the computer modules in the CU, where the failure coverage assumes to be 1 for the first failing computer module.
 
 \begin{table}[h]
 \centering
 \begin{tabular}{| c | c | c | c |}
 \hline 
-Subsystem & Part & Failure rate & Coverage\\
+\textbf{Subsystem} & \textbf{Part} & \textbf{Failure rate ($\lambda$)} & \textbf{Coverage}\\
 \hline
-System bus & Serial bus& FailureRate & 1\\
+System bus & Serial bus& $5 \times 10 ^{-7}$ [f/h] & 1\\
 \hline
-Wheel unit & Computer module & FailureRate & 1\\
+Wheel unit & Computer module & $15 \times 10 ^{-6}$ [f/h]  & 1\\
 \hline
-Wheel unit & Sensor & FailureRate & 1\\
+Wheel unit & Sensor & $2 \times 10 ^{-6}$ [f/h]  & 1\\
 \hline
-Wheel unit & Actuator & FailureRate & 1\\
+Wheel unit & Actuator & $1 \times 10 ^{-6}$ [f/h]  & 1\\
 \hline
-Central unit & Computer module & FailureRate & 0.99\\
+Central unit & Computer module & $8 \times 10 ^{-6}$ [f/h]  & 0.99\\
 \hline
 \end{tabular}
-\caption{Failure rates and coverage factors for the distributed architecture}
+\caption{Failure rates and coverage factors for the distributed architecture.}
 \label{tab:faildist}
 
 
@@ -52,19 +54,19 @@ Central unit & Computer module & FailureRate & 0.99\\
 \centering
 \begin{tabular}{| c | c | c | c |}
 \hline 
-Subsystem & Part & Failure rate & Coverage\\
+\textbf{Subsystem} & \textbf{Part} & \textbf{Failure rate ($\lambda$)} & \textbf{Coverage}\\
 \hline
-System bus & Serial bus& FailureRate & 1\\
+System bus & Serial bus& $5 \times 10 ^{-7}$ [f/h]  & 1\\
 \hline
-Wheel unit & Computer module & FailureRate & 1\\
+Wheel unit & Computer module & $10 \times 10 ^{-6}$ [f/h]  & 1\\
 \hline
-Wheel unit & Sensor & FailureRate & 1\\
+Wheel unit & Sensor & $2 \times 10 ^{-6}$ [f/h]  & 1\\
 \hline
-Wheel unit & Actuator & FailureRate & 1\\
+Wheel unit & Actuator & $1 \times 10 ^{-6}$ [f/h]  & 1\\
 \hline
-Central unit & Computer module & FailureRate & First CM failure:1 Second CM failure: 0.99\\
+Central unit & Computer module & $10 \times 10 ^{-6}$ [f/h]  & First CM failure:1  Second CM failure: 0.99\\
 \hline
 \end{tabular}
-\caption{Failure rates and coverage factors for the Centralized Architecture}
+\caption{Failure rates and coverage factors for the Centralized Architecture.}
 \label{tab:failcent}
 \end{table}

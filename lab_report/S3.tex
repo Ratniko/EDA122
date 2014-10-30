@@ -3,6 +3,15 @@
 \label{S3}
 In this section, models for the two architectures and their subsystems will be described.
 
+\subsection{System Bus Subsystem Model}
+The subsystem for the system bus comprises of two redundant serial buses. Each serial bus is connected to all computer modules in the system as in \figref{fig2} and \figref{fig6}. The system bus subsystem can deliver its service if any of the two serial buses remain operational, resulting in the reliability block diagram shown in \figref{fig0}.
+\begin{figure}[H]
+  \centering
+  \includegraphics[scale=0.9]{sb_block.png}
+  \caption{Reliability block diagram of the system bus subsystem.}
+  \label{fig0}
+\end{figure}
+
 \subsection{Wheel Unit Model}
 Each wheel unit consists of three different components, sensors (S), actuator (A), and computing modules (CM), organized as in \figref{fig2}. There are two redundant CMs, two redundant sensors, and one actuator, yielding the reliability block diagram shown in \figref{fig3}.   
 \begin{figure}[H]
@@ -14,7 +23,7 @@ Each wheel unit consists of three different components, sensors (S), actuator (A
 \begin{figure}[H]
   \centering
   \includegraphics[scale=0.7]{wu_block.png}
-  \caption{Reliability block diagram of the wheel unit}
+  \caption{Reliability block diagram of the wheel unit.}
   \label{fig3}
 \end{figure}
 
@@ -25,18 +34,18 @@ Each wheel unit consists of three different components, sensors (S), actuator (A
 A combination of four WUs yields the wheel unit subsystem. In the full functionality mode of operation the subsystem can not tolerate any broken WUs, a fault tree in \figref{fig4} is shown for this mode. When running in the other mode of operation, allowing degraded functionality, one WU can become faulty without causing a full system failure, shown in \figref{fig5}. 
 \begin{figure}[H]
   \Tree[.{WU Subsystem Failure} [.{$1 \geq$} WU WU WU WU ] ]
-  \caption{Fault tree for the Wheel Unit Subsystem, full functionality}
+  \caption{Fault tree for the Wheel Unit Subsystem, full functionality.}
   \label{fig4}
 \end{figure}
 \begin{figure}[H]
   \Tree[.{WU Subsystem Failure} [.{$2 \geq$} WU WU WU WU ] ]
-  \caption{Fault tree for the Wheel Unit Subsystem, degraded functionality}
+  \caption{Fault tree for the Wheel Unit Subsystem, degraded functionality.}
   \label{fig5}
 \end{figure}
 
 
 %--------------------------------
-\subsection{Central Unit (CU)}
+\subsection{Central Unit Model}
 In the two evaluated architectures the central unit is configured in two different ways. The distributed architecture's central unit is described in \secref{subsec:dda} and the central unit for the centralized architecture is described in \secref{subsec:cta}. 
 
 \subsubsection{Distributed Duplex Architecture}
@@ -46,13 +55,13 @@ The distributed architecture's central unit consists of two computing modules (C
 \begin{figure}[H]
   \centering
   \includegraphics[scale=.5]{Fig6.pdf}
-  \caption{Central Unit, duplex configuration }
+  \caption{Central Unit, duplex configuration.}
   \label{fig6}
 \end{figure}
 \begin{figure}[H]
   \centering
   \includegraphics[scale=1.0]{cm2_block.png}
-  \caption{Reliability block diagram for the Central Unit, duplex configuration}
+  \caption{Reliability block diagram for the Central Unit, duplex configuration.}
   \label{fig7}
 \end{figure}
 \begin{figure}[H]
@@ -65,7 +74,7 @@ The distributed architecture's central unit consists of two computing modules (C
       \draw [->,bend right=45] (s2) to node[below] {$(1-c)*2\lambda_{CU-CM}$} (s4);
       \draw [->,bend left=45] (s3) to node[above] {$\lambda_{CU-CM}$} (s4);
     \end{tikzpicture}
-  \caption{Markov chain model for central unit with duplex configuration}
+  \caption{Markov chain model for central unit with duplex configuration.}
    \label{fig8}
 \end{center}
 \end{figure}
@@ -82,14 +91,14 @@ How the CMs are connected can be seen in \figref{fig9}, and the corresponding re
 \begin{figure}[H]
   \centering
   \includegraphics[scale=.5]{Fig9.pdf}
-  \caption{Central Unit, triplex configuration }
+  \caption{Central Unit, triplex configuration.}
   \label{fig9}
 \end{figure}
 
 \begin{figure}[H]
   \centering
   \includegraphics[scale=1.0]{cm3_block.png}
-  \caption{Reliability block diagram for central unit in triplex configuration}
+  \caption{Reliability block diagram for central unit in triplex configuration.}
   \label{fig10}
 \end{figure}
 \begin{figure}[H]
@@ -104,7 +113,7 @@ How the CMs are connected can be seen in \figref{fig9}, and the corresponding re
     \draw [->,bend right=45] (sb) to node[below] {$(1-c)*2\lambda_{CU-CM}$} (sd);
     \draw [->,bend left=45] (sc) to node[above] {$\lambda_{CU-CM}$} (sd);
   \end{tikzpicture}
-  \caption{Markov chain model for central unit in triplex configuration}
+  \caption{Markov chain model for central unit in triplex configuration.}
   \label{fig11}
 \end{figure}
 
@@ -122,12 +131,12 @@ In \figref{fig12} a fault tree for the centralized architecture, running in the 
 
 \begin{figure}[H]
   \Tree[.{System Failure} [.{$1 \geq$} [.{CU subsystem fail} [.{$\&$} CM CM CM ] ] [.{WU subsystem fail} [.{$1 \geq$} WU WU WU WU ] ] [.{SB subsystem fail} [.{\&} SB SB ] ] ] ]
-  \caption{Fault tree for Full Functionality}
+  \caption{Fault tree for Full Functionality.}
   \label{fig12}
 \end{figure}
 \begin{figure}[H]
   \Tree[.{System Failure} [.{$1 \geq$} [.{CU subsystem fail} [.{$\&$} CM CM CM ] ] [.{WU subsystem fail} [.{$2 \geq$} WU WU WU WU ] ] [.{SB subsystem fail} [.{\&} SB SB ] ] ] ]
-  \caption{Fault tree for Degraded Functionality}
+  \caption{Fault tree for Degraded Functionality.}
   \label{fig13}
 \end{figure}
 
@@ -137,11 +146,11 @@ For the distributed architecture, fault trees for full functionality and degrade
 
 \begin{figure}[H]
   \Tree[.{System Failure} [.{$1 \geq$} [.{CU subsystem fail} [.{$\&$} CM CM ] ] [.{WU subsystem fail} [.{$1 \geq$} WU WU WU WU ] ] [.{SB subsystem fail} [.{\&} SB SB ] ] ] ]
-  \caption{Fault tree for Full Functionality}
+  \caption{Fault tree for Full Functionality.}
   \label{fig14}
 \end{figure}
 \begin{figure}[H]
   \Tree[.{System Failure} [.{$1 \geq$} [.{CU subsystem fail} [.{$\&$} CM CM ] ] [.{WU subsystem fail} [.{$2 \geq$} WU WU WU WU ] ] [.{SB subsystem fail} [.{\&} SB SB ] ] ] ]
-  \caption{Fault tree for Degraded Functionality}
+  \caption{Fault tree for Degraded Functionality.}
   \label{fig15}
 \end{figure}
