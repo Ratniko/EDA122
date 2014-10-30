@@ -1,0 +1,85 @@
+format 8
+bind
+	lambdaWU_CM 15e-6
+	lambdaWU_S 2e-6
+	lambdaWU_A 1e-6
+	lambdaSB_SB 5e-7
+	lambdaCU_CM 8e-6
+	c 99e-2
+end
+
+
+block WU_dist
+	comp CM exp(lambdaWU_CM)
+	comp Sensor exp(lambdaWU_S)
+	comp Actuator exp(lambdaWU_A)
+
+	parallel twoCM CM CM
+	parallel twoSensors Sensor Sensor
+	series top twoCM twoSensors Actuator
+end
+
+block SB_SB
+	comp SB exp(lambdaSB_SB)
+end
+
+ftree WU_four_dist_deg
+	basic WU cdf(WU_dist)
+	kofn top 2,4,WU
+end
+
+ftree WU_four_dist
+	basic WU cdf(WU_dist)
+	kofn top 1,4,WU
+end
+
+
+markov CU_duplex
+	* Transisions
+	A B 2*lambdaCU_CM*c
+	B C lambdaCU_CM
+	A C 2*(1-c)*lambdaCU_CM
+end
+
+	* INitial propbz
+	A 1.0
+	B 0.0
+	C 0.0
+end
+
+ftree FS_dist
+	basic WU cdf(WU_four_dist)
+	basic SB cdf(SB_SB)
+	basic CU cdf(CU_duplex)
+	kofn SBs 2,2,SB
+	or top WU SBs CU
+end
+
+ftree FS_dist_deg
+	basic WU cdf(WU_four_dist_deg)
+	basic SB cdf(SB_SB)
+	basic CU cdf(CU_duplex)
+	kofn SBs 2,2,SB
+	or top WU SBs CU
+end
+*expr mean( WU_dist )/24/365
+*expr mean( WU_four_dist )/24/365
+*expr mean( WU_four_dist_deg )/24/365
+*expr mean( CU_duplex )/24/365
+*expr mean( FS_dist )/24/365
+*expr mean( FS_dist_deg )/24/365
+
+*eval ( WU_dist ) 0 35040 730
+*eval ( WU_four_dist ) 0 35040 730
+eval ( WU_four_dist_deg ) 0 35040 730
+*eval ( CU_duplex ) 0 35040 730
+*eval ( FS_dist ) 0 35040 730
+*eval ( FS_dist_deg ) 0 35040 730
+
+*expr 1-value(17520; WU_dist )
+*expr 1-value(17520; WU_four_dist )
+*expr 1-value(17520; WU_four_dist_deg )
+*expr 1-value(17520; CU_duplex )
+*expr 1-value(17520; FS_dist )
+expr 1-value(21961; FS_dist_deg )
+end
