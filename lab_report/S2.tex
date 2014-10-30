@@ -30,21 +30,23 @@ Model parameters for the distributed architecture is presented in \tabref{tab:fa
 
 \begin{table}[h]
 \centering
-\begin{tabular}{| c | c | c | c |}
-\hline 
-\textbf{Subsystem} & \textbf{Part} & \textbf{Failure rate ($\lambda$)} & \textbf{Coverage}\\
-\hline
-System bus & Serial bus& $5 \times 10 ^{-7}$ [f/h] & 1\\
-\hline
-Wheel unit & Computer module & $15 \times 10 ^{-6}$ [f/h]  & 1\\
-\hline
-Wheel unit & Sensor & $2 \times 10 ^{-6}$ [f/h]  & 1\\
-\hline
-Wheel unit & Actuator & $1 \times 10 ^{-6}$ [f/h]  & 1\\
-\hline
-Central unit & Computer module & $8 \times 10 ^{-6}$ [f/h]  & 0.99\\
-\hline
-\end{tabular}
+ \makebox[\linewidth]{
+	\begin{tabular}{| c | c | c | c |}
+		\hline 
+		\textbf{Subsystem} & \textbf{Part} & \textbf{Failure rate ($\lambda$)} & \textbf{Coverage}\\
+		\hline
+		System bus & Serial bus& $5 \times 10 ^{-7}$ [f/h] & 1\\
+		\hline
+		Wheel unit & Computer module & $15 \times 10 ^{-6}$ [f/h]  & 1\\
+		\hline
+		Wheel unit & Sensor & $2 \times 10 ^{-6}$ [f/h]  & 1\\
+		\hline
+		Wheel unit & Actuator & $1 \times 10 ^{-6}$ [f/h]  & 1\\
+		\hline
+		Central unit & Computer module & $8 \times 10 ^{-6}$ [f/h]  & 0.99\\
+		\hline
+	\end{tabular}
+}
 \caption{Failure rates and coverage factors for the distributed architecture.}
 \label{tab:faildist}
 
@@ -52,21 +54,23 @@ Central unit & Computer module & $8 \times 10 ^{-6}$ [f/h]  & 0.99\\
 \end{table}
 \begin{table}[h]
 \centering
-\begin{tabular}{| c | c | c | c |}
-\hline 
-\textbf{Subsystem} & \textbf{Part} & \textbf{Failure rate ($\lambda$)} & \textbf{Coverage}\\
-\hline
-System bus & Serial bus& $5 \times 10 ^{-7}$ [f/h]  & 1\\
-\hline
-Wheel unit & Computer module & $10 \times 10 ^{-6}$ [f/h]  & 1\\
-\hline
-Wheel unit & Sensor & $2 \times 10 ^{-6}$ [f/h]  & 1\\
-\hline
-Wheel unit & Actuator & $1 \times 10 ^{-6}$ [f/h]  & 1\\
-\hline
-Central unit & Computer module & $10 \times 10 ^{-6}$ [f/h]  & First CM failure:1  Second CM failure: 0.99\\
-\hline
-\end{tabular}
+ \makebox[\linewidth]{
+	\begin{tabular}{| c | c | c | c |}
+		\hline 
+		\textbf{Subsystem} & \textbf{Part} & \textbf{Failure rate ($\lambda$)} & \textbf{Coverage}\\
+		\hline
+		System bus & Serial bus& $5 \times 10 ^{-7}$ [f/h]  & 1\\
+		\hline
+		Wheel unit & Computer module & $10 \times 10 ^{-6}$ [f/h]  & 1\\
+		\hline
+		Wheel unit & Sensor & $2 \times 10 ^{-6}$ [f/h]  & 1\\
+		\hline
+		Wheel unit & Actuator & $1 \times 10 ^{-6}$ [f/h]  & 1\\
+		\hline
+		Central unit & Computer module & $10 \times 10 ^{-6}$ [f/h]  & First CM failure:1  Second CM failure: 0.99\\
+		\hline
+	\end{tabular}
+}
 \caption{Failure rates and coverage factors for the Centralized Architecture.}
 \label{tab:failcent}
 \end{table}
