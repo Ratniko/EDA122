@@ -7,6 +7,15 @@ if [ $# == "3" ];then
 	echo "Created 2 plots and outputed them as a pdfs"
 	exit
 fi;
+if [ $# == "4" ];then
+	DAT1=$1
+	DAT2=$2
+	DAT3=$3
+	PDFNAME=$4
+	gnuplot -e 'set terminal pdf;dat1="'$DAT1'";t1="'${DAT1%%.*}'";dat2="'$DAT2'";t2="'${DAT2%%.*}'";dat3="'$DAT3'";t3="'${DAT3%%.*}'";set output "'$PDFNAME'"' plot3.pty
+	echo "Created 3 plots and outputed them as a pdfs"
+	exit
+fi;
 if [ $# == "5" ];then
 	DAT1=$1
 	DAT2=$2
